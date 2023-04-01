@@ -1,9 +1,7 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import LogoWhite from '../assets/LogoWhite.svg';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 const Drawer = ({ open, toggleDrawer }) => {
-  console.log(open);
   return (
     open && (
       <div className="flex justify-end w-full h-screen z-40 absolute top-0 left-0 bg-[#051A2D4D] ">
