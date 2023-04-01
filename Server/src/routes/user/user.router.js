@@ -1,4 +1,5 @@
 const express = require("express");
+const { saveUser } = require("./user.controller");
 
 /*
 const {
@@ -8,10 +9,10 @@ getUserByID
 
 const userRouter = express.Router();
 
-// userRouter
-//   .route()
+userRouter
+  .route('/')
+  .post(saveUser)
 //   .get()
-//   .post()
 //   .put()
 //   .delete();
 
