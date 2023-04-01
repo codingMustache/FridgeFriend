@@ -1,5 +1,8 @@
 const express = require("express");
 
+// const {
+// } = require("./fridges.controller");
+
 const fridgesRouter = express.Router();
 
 // fridgeRouter
