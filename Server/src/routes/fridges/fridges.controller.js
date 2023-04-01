@@ -17,5 +17,7 @@ const addFridge = async (req, res) => {
   res.send()
 }
 
-module.exports = addFridge
+module.exports = {
+  addFridge
+}
 
