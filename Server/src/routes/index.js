@@ -1,13 +1,14 @@
-const app = require("express");
+const express = require("express");
 
-const userRouter = require("./user/user.router");
-const ticketRouter = require("./ticket/ticket.router");
-const fridgesRouter = require("./fridges/fridges.router.js");
+//const userRouter = require("./user/user.router");
+//const ticketRouter = require("./ticket/ticket.router");
+const fridgesRouter = require("./fridges/fridges.router");
+console.log('test')
 
-const api = app.Router();
 
-api.use("/user", userRouter);
+const api = express.Router();
+//api.use("/user", userRouter);
 api.use("/fridges", fridgesRouter);
-api.use("/ticket", ticketRouter);
+//api.use("/ticket", ticketRouter);
 
 module.exports = api;

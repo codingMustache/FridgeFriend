@@ -12,8 +12,9 @@ getFridgesImagesB
 
 const fridgesRouter = express.Router();
 
+console.log('hello')
 fridgesRouter()
-  .route('/')
+  .route()
   .post(addFridge)
 //   .get()
 //   .put()
