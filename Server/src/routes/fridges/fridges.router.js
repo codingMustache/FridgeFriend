@@ -1,20 +1,21 @@
 const express = require("express");
 
-/*
 const {
+  addFridge
+} = require("./fridges.controller");
+/*
 getAllFridgesGeoCode
 getFridgeAddress
 getFridgeGeoCode
-getFridgesImagesByID
-} = require("./fridges.controller");
+getFridgesImagesB
 */
 
 const fridgesRouter = express.Router();
 
-// fridgeRouter
-//   .route()
+fridgesRouter
+  .route('/')
+  .post(addFridge)
 //   .get()
-//   .post()
 //   .put()
 //   .delete();
 

@@ -8,6 +8,7 @@ import {
 import Auth0ProviderWithNavigate from './components/Auth/Auth0ProviderWithNavigate';
 import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './components/Layout/Layout';
+import { UserProvider } from './contexts/user.context';
 import App from './App';
 import FridgeDetails from './routes/FridgeDetails';
 import Profile from './routes/Profile';
@@ -34,9 +35,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Auth0ProviderWithNavigate>
-      <Layout>
-        <RouterProvider router={router} />
-      </Layout>
+      <UserProvider>
+        <Layout>
+          <RouterProvider router={router} />
+        </Layout>
+      </UserProvider>
     </Auth0ProviderWithNavigate>
   </React.StrictMode>
 );
