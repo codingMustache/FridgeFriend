@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "node --watch server/index.js",
-    "pretty": "prettier --write .",
+    "pretty": "prettier --write ."
   },
   "repository": {
     "type": "git",
