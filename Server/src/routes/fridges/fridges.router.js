@@ -15,7 +15,6 @@ const fridgesRouter = express.Router();
 fridgesRouter
   .route('/')
   .post(addFridge)
-console.log('hello')
 //   .get()
 //   .put()
 //   .delete();

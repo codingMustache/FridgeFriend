@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const api = require("./routes/index");
 
-console.log('test')
+
 const port = 3000;
 
 //const publicPath = path.resolve(__dirname, "../client/public");
