@@ -6,6 +6,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Auth0ProviderWithNavigate from './components/Auth/Auth0ProviderWithNavigate';
+import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './components/Layout/Layout';
 import App from './App';
 import FridgeDetails from './routes/FridgeDetails';
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     path: 'profile',
     element: <Profile />,
     loader: async () => {
-      const user = false;
+      const { user } = useAuth0();
       if (!user) {
         throw redirect('/');
       }
