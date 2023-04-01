@@ -1,7 +1,18 @@
 const express = require("express");
 
-// const {
-// } = require("./ticket.controller");
+/*
+const {
+getAllTickets
+getAllTicketsByFridgeID
+getAllOpenTicketsByFridgeID
+getAllClaimedTicketsByFridgeID
+getAllClosedTicketsByFridgeID
+getAllTicketsByUserID
+getAllOpenTicketsByUserID
+getAllClaimedTicketsByUserID
+getAllClosedTicketsByUserID
+} = require("./ticket.controller");
+*/
 
 const ticketRouter = express.Router();
 
