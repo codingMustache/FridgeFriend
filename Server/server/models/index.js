@@ -1,13 +1,4 @@
-const app = require("express");
+module.exports.Fridge = require("./fridge.model");
+module.exports.Ticket = require("./ticket.model");
+module.exports.User = require("./user.model");
 
-const userRouter = require("./user/user.router");
-const ticketRouter = require("./ticket/ticket.router");
-const fridgeRouter = require("./fridge/fridge.router");
-
-const api = app.Router();
-
-api.use("/user", userRouter);
-api.use("/fridge", fridgeRouter);
-api.use("/ticket", ticketRouter);
-
-module.exports = api;
