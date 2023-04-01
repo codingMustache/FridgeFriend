@@ -19,7 +19,11 @@ const ticketSchema = new Schema({
     }],
     serviceType: String,
     details: String,
-    imageUrl: String
+    imageUrl: String,
+    isOpen: {
+        type: Boolean,
+        default: true,
+    }
 }, { timestamps: true });
 
 module.exports = model("Ticket", ticketSchema);

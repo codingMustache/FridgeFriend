@@ -10,23 +10,24 @@
         res.sendStatus(500);
     }
     
-}
+};
 
-//  const getAllOpenTicketsByFridgeID = async (req, res) => {
-//     // find all tickets with if open status is true by fridge ID
-//     const {  }
-//     try {
-//         const ticks = await Tickets.findById(fridgeId);
-//         if (ticks.isOpen) {
-//             res.status(300).send(ticks);
-//         } else {
-//             res.sendStatus(400);
-//         }
-//     } catch (err) {
-//         console.error(err);
-//         res.sendStatus(500);
-//     }
-// }
+ const getAllOpenTicketsByFridgeID = async (req, res) => {
+    // find all tickets with if open status is true by fridge ID
+    const { fridgeId } = req.params;
+    const { isOpen } = req.body;
+    try {
+        const ticks = await Tickets.findById(fridgeId);
+        if (ticks.isOpen) {
+            res.status(300).send(ticks);
+        } else {
+            res.sendStatus(400);
+        }
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+};
 
 // export const getAllClaimedTicketsByFridgeID = () => {}
 
@@ -40,4 +41,7 @@
 
 // export const getAllClosedTicketsByUserID = () => {}
 
-module.exports = {getAllTicketsByFridgeID}
+module.exports = {
+    getAllTicketsByFridgeID, 
+    getAllOpenTicketsByFridgeID
+};
