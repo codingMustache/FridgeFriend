@@ -1,7 +1,13 @@
 const express = require("express");
 
-// const {
-// } = require("./fridges.controller");
+/*
+const {
+getAllFridgesGeoCode
+getFridgeAddress
+getFridgeGeoCode
+getFridgesImagesByID
+} = require("./fridges.controller");
+*/
 
 const fridgesRouter = express.Router();
 

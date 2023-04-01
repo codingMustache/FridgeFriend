@@ -1,8 +1,10 @@
 const express = require("express");
 
-
-// const {
-// } = require("./user.controller");
+/*
+const {
+getUserByID
+} = require("./user.controller");
+*/
 
 const userRouter = express.Router();
 
