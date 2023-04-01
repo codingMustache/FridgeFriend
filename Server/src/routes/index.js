@@ -1,9 +1,8 @@
 const express = require("express");
 
-//const userRouter = require("./user/user.router");
-//const ticketRouter = require("./ticket/ticket.router");
+const userRouter = require("./user/user.router");
+const ticketRouter = require("./ticket/ticket.router");
 const fridgesRouter = require("./fridges/fridges.router");
-console.log('test')
 
 
 const api = express.Router();
