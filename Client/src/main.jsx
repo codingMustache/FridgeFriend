@@ -5,6 +5,7 @@ import {
   redirect,
   RouterProvider,
 } from 'react-router-dom';
+import Auth0ProviderWithNavigate from './components/Auth/Auth0ProviderWithNavigate';
 import Layout from './components/Layout/Layout';
 import App from './App';
 import FridgeDetails from './routes/FridgeDetails';
@@ -31,8 +32,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <Auth0ProviderWithNavigate>
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
+    </Auth0ProviderWithNavigate>
   </React.StrictMode>
 );

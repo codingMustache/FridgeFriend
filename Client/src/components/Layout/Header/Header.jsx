@@ -1,5 +1,6 @@
 import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
 import LogoGreen from '../../../assets/LogoGreen.svg';
+import LoginButton from '../../Auth/LoginButton';
 
 const Header = () => {
   const user = false;
@@ -14,9 +15,7 @@ const Header = () => {
           </h1>
         </div>
         {!user ? (
-          <button className="hidden rounded-3xl bg-[#FB8B01] px-4 py-1 text-white font-jakarta font-bold tracking-wide md:block">
-            Log In
-          </button>
+          <LoginButton />
         ) : (
           <img
             src={'https://tinyurl.com/4umnyauy'}
