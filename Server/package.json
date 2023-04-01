@@ -1,0 +1,27 @@
+{
+  "name": "fridge-friend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node --watch server/index.js",
+    "pretty": "prettier --write .",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Merge-Sorts/fridge-Friend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Merge-Sorts/fridge-Friend/issues"
+  },
+  "homepage": "https://github.com/The-Merge-Sorts/fridge-Friend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "prettier": "^2.8.7"
+  }
+}
