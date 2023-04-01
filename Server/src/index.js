@@ -4,7 +4,7 @@ const cors = require("cors");
 require("./db");
 require("dotenv").config();
 
-const api = require("./routes/api");
+const api = require("./routes/index.js");
 
 const port = 3000;
 
