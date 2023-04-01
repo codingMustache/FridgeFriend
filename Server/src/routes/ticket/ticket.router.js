@@ -16,10 +16,9 @@ getAllClosedTicketsByUserID
 const ticketRouter = express.Router();
 
 ticketRouter.get('/:fridgeId', getAllTicketsByFridgeID);
-ticketRouter.get('/:fridgeId/open', getAllOpenTicketsByFridgeID);
+//ticketRouter.get('/:fridgeId/open', getAllOpenTicketsByFridgeID);
 
-
-module.exports = ticketRouter;
+module.exports = {ticketRouter};
 
 
 // ticketRouter
