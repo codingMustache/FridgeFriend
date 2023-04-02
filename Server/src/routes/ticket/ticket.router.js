@@ -1,8 +1,6 @@
 const express = require("express");
 
-const {
-    getAllTicketsByFridgeID
-} = require("./ticket.controller");
+const { getAllTicketsByFridgeID, getAllOpenTicketsByFridgeID, getAllClosedTicketsByFridgeID, getAllTicketsByUserID, getAllOpenTicketsByUserID } = require("./ticket.controller");
 /*
 getAllTickets
 getAllOpenTicketsByFridgeID
@@ -18,8 +16,10 @@ const ticketRouter = express.Router();
 
 ticketRouter.get('/:fridgeId', getAllTicketsByFridgeID);
 ticketRouter.get('/:fridgeId/open', getAllOpenTicketsByFridgeID);
-
-module.exports = {ticketRouter};
+ticketRouter.get('/:fridgeId/closed', getAllClosedTicketsByFridgeID);
+ticketRouter.get('/:userId', getAllTicketsByUserID);
+ticketRouter.get('/:userId/open', getAllOpenTicketsByUserID);
+module.exports = ticketRouter;
 
 
 // ticketRouter

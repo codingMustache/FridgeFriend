@@ -1,9 +1,12 @@
+const { Ticket } = require('../../models');
 
- const getAllTicketsByFridgeID = async (req, res) => {
+const getAllTicketsByFridgeID = async (req, res) => {
     // use the fridges ID to query all the tickets that exist on the tickets array from the db
     const { fridgeId } = req.params;
+    console.log(fridgeId, 'fridgeID');
     try {
-        const ticks = await Tickets.findById(fridgeId);
+        const ticks = await Ticket.findById(fridgeId);
+        console.log(ticks);
         res.status(300).send(ticks);
     } catch (err) {
         console.error(err);
@@ -12,12 +15,12 @@
     
 };
 
- const getAllOpenTicketsByFridgeID = async (req, res) => {
+const getAllOpenTicketsByFridgeID = async (req, res) => {
     // find all tickets with if open status is true by fridge ID
     const { fridgeId } = req.params;
     const { isOpen } = req.body;
     try {
-        const ticks = await Tickets.findById(fridgeId);
+        const ticks = await Ticket.findById(fridgeId);
         if (ticks.isOpen) {
             res.status(300).send(ticks);
         } else {
@@ -29,19 +32,43 @@
     }
 };
 
-// export const getAllClaimedTicketsByFridgeID = () => {}
+const getAllClosedTicketsByFridgeID = async (req, res) => {
+    const { fridgeId } = req.params;
+    const { isOpen } = req.body;
+    try {
+        const closedTicks = await Ticket.findById(fridgeId);
+        if (!isOpen) {
+            res.status(300).send(closedTicks);
+        }
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+};
 
-// export const getAllClosedTicketsByFridgeID = () => {}
+const getAllTicketsByUserID = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const ticks = await Ticket.findById(userId);
+        res.status(300).send(ticks);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+};
 
-// export const getAllTicketsByUserID = () => {}
+const getAllOpenTicketsByUserID = async (req, res) => {
+    
+};
 
-// export const getAllOpenTicketsByUserID = () => {}
+//const getAllClaimedTicketsByUserID = () => {}
 
-// export const getAllClaimedTicketsByUserID = () => {}
-
-// export const getAllClosedTicketsByUserID = () => {}
-
+//const getAllClosedTicketsByUserID = () => {}
+// subscription for by 
 module.exports = {
     getAllTicketsByFridgeID, 
-    getAllOpenTicketsByFridgeID
+    getAllOpenTicketsByFridgeID,
+    getAllClosedTicketsByFridgeID,
+    getAllTicketsByUserID,
+    getAllOpenTicketsByUserID,
 };
