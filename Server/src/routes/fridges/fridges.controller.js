@@ -16,8 +16,10 @@ const upload = multer({ dest: './tmp/' }).single('file');
 
 const getAllFridgesGeoCode = async (req, res) => {
   Fridge.find({}).select('location')
-    .then(data => res.send(data))
-    .catch(err => error.log(err))
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => console.error(err))
 }
 
 const addFridge = async (req, res) => {
@@ -43,9 +45,10 @@ const addFridge = async (req, res) => {
 }
 
 const getFridgeInfoByID = (req, res) => {
-  Fridge.findOne({ "_id": req.params.id })
-    .then(data => res.send(data))
-    .catch(err => error.log(err))
+  console.log(req.params.id)
+  Fridge.findOne({"_id": req.params.id})
+  .then(data => res.send(data))
+  .catch(err => console.error(err))
 }
 
 const updateByField = async (req, res) => {
