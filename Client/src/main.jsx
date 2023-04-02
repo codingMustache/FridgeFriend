@@ -12,6 +12,8 @@ import { UserProvider } from './contexts/user.context';
 import App from './App';
 import FridgeDetails from './routes/FridgeDetails';
 import Profile from './routes/Profile';
+import Ticket from './components/Ticket';
+import Subscribe from './components/Subscribe';
 
 import './index.css';
 
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       return user;
     },
   },
+  {
+    path: 'new-ticket/:fridgeId',
+    element: <Ticket />,
+  },
+  {
+    path: 'subscribe/:fridgeId',
+    element: <Subscribe />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

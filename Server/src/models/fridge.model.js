@@ -26,10 +26,10 @@ const fridgeSchema = new Schema({
             default: new Date()
         }
     }],
-    tickets: {
+    tickets: [{
         type: Schema.Types.ObjectId,
         ref: "Ticket"
-    },
+    }],
     subscriptions: [{
         classes: {
             foodAdded: {
@@ -40,27 +40,25 @@ const fridgeSchema = new Schema({
                 type: Boolean,
                 default: true,
            },
-            newTicket: {
-                maintenance: {
-                    type: Boolean,
-                    default: false,
-                },
-                cleaning: {
-                    type: Boolean,
-                    default: false,
-                },
-                food: {
-                    type: Boolean,
-                    default: false,
-                },
-                transportation: {
-                    type: Boolean,
-                    default: false,
-                },
-                misc: {
-                    type: Boolean,
-                    default: false
-                }
+            maintenance: {
+                type: Boolean,
+                default: false,
+            },
+            cleaning: {
+                type: Boolean,
+                default: false,
+            },
+            food: {
+                type: Boolean,
+                default: false,
+            },
+            transportation: {
+                type: Boolean,
+                default: false,
+            },
+            misc: {
+                type: Boolean,
+                default: false
             }
         },
         userId: {

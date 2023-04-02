@@ -45,7 +45,7 @@ const addFridge = async (req, res) => {
 }
 
 const getFridgeInfoByID = (req, res) => {
-  console.log(req.params.id)
+  // console.log(req.params.id)
   Fridge.findOne({"_id": req.params.id})
   .then(data => res.send(data))
   .catch(err => console.error(err))
@@ -86,12 +86,95 @@ const addImageToInsideFridge = async (req, res) => {
   fs.emptyDir('./tmp');
 }
 
+// const addSubscription = async (req, res) => {
+//   try {
+//     const { userId } = req.body;
+//     console.log('req.body', req.body);
+//     const newClasses = req.body;
+//     delete newClasses.userId;
+//     const fridgeId = req.params.id;
+//     console.log('fridgeId', fridgeId);
+//     const fridge = await Fridge.findOne({ _id: fridgeId });
+
+//     const foundSub = fridge.subscriptions.find((sub) => sub.userId === userId);
+
+//     if (!foundSub) {
+//       const newSubscription = { classes: { newTicket: newClasses }, userId };
+//       fridge.subscriptions.push(newSubscription);
+//       await fridge.save();
+//       res.status(201).send(newSubscription);
+//     } else {
+//       foundSub.classes = { ...foundSub.classes, ...newClasses };
+//       await fridge.save();
+//       res.status(200).send(foundSub);
+//     }
+//   } catch (err) {
+//     console.log('error:', err);
+//     res.sendStatus(500);
+//   }
+// };
+const addSubscription = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    console.log('req.body', req.body);
+    const newClasses = {...req.body};
+    delete newClasses.userId;
+    const fridgeId = req.params.id;
+    console.log('fridgeId', fridgeId);
+    const fridge = await Fridge.findOne({ _id: fridgeId });
+
+    const foundSub = fridge.subscriptions.find((sub) => sub.userId === userId);
+
+    if (!foundSub) {
+      const newSubscription = { classes: newClasses, userId };
+      fridge.subscriptions.push(newSubscription);
+      fridge.save();
+      res.status(201).send(newSubscription);
+    } else {
+      const copy = {...foundSub.classes}
+      foundSub.classes = { ...copy, ...newClasses };
+      fridge.save();
+      res.status(200).send(foundSub);
+    }
+  } catch (err) {
+    console.log('error:', err);
+    res.sendStatus(500);
+  }
+};
+// const addSubscription = async (req, res) => {
+//   try {
+//     // NOTE: there are other props in req.body ( maintenance, cleaning, food, transportation, misc, foodAdded ) but do not need destructuring
+//     const { userId } = req.body;
+//     console.log('req.body', req.body)
+//     const newClasses = req.body;
+//     delete newClasses.userId;
+//     const fridgeId = req.params.id;
+//     console.log('fridgeId', fridgeId)
+//     const fridge = await Fridge.findById(fridgeId);
+//     const foundSub = fridge.subscriptions.find((sub) => sub.userId === userId)
+//     if (!foundSub) {
+//       fridge.subscriptions.push({classes: newClasses, userId })
+//       fridge.save();
+//       // res.status(200).send(fridge.subscriptions[fridge.subscriptions.length - 1])
+//       res.sendStatus(200);
+//     } else {
+//       foundSub.classes = { ...foundSub.classes, ...newClasses }
+//       foundSub.save();
+//       res.status(200).send(foundSub);
+//     }
+//   } catch (err) {
+//     console.log('error:',err)
+//     res.sendStatus(500);
+//   }
+// }
+
 
 module.exports = {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
   updateByField,
-  addImageToInsideFridge
+  addImageToInsideFridge,
+  addSubscription
 }
 
