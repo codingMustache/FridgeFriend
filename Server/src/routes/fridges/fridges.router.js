@@ -4,6 +4,7 @@ const {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
+  addImageToInsideFridge,
   updateByField
 } = require("./fridges.controller");
 /*

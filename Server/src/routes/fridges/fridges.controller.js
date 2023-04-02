@@ -72,7 +72,7 @@ const addImageToInsideFridge = async (req, res) => {
       format: 'jpg',
     })
     .then((data) => {
-      const fullArr = imgArr.push(data.url)
+      const fullArr = imgArr.push({url: data.url})
       Fridge.findOneAndUpdate(_id, fullArr, { new: true })
         .then(data => res.status(201).json(data.url))
         .catch(err => error.log(err))
