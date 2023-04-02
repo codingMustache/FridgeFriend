@@ -17,7 +17,10 @@ import './index.css';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
-  { path: 'details/:fridge', element: <FridgeDetails /> },
+  {
+    path: 'details/:fridge',
+    element: <FridgeDetails />,
+  },
   {
     path: 'profile',
     element: <Profile />,
