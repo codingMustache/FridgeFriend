@@ -1,10 +1,18 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
+import { useContext, useMemo } from 'react';
+import { UserContext } from '../../../contexts/user.context';
 import LogoGreen from '../../../assets/LogoGreen.svg';
 import LoginButton from '../../Auth/LoginButton';
 
 const Header = ({ toggleDrawer }) => {
   const { user, logout } = useAuth0();
+  const { currentUser } = useContext(UserContext);
+
+  useMemo(() => {
+    console.log('currentUser useMemo', currentUser);
+  }, [currentUser])
+
   return (
     <header className="w-full bg-transparent fixed z-30 md:bg-white md:transition-colors md:shadow-sm">
       <nav className="p-4 flex justify-between">
@@ -14,7 +22,7 @@ const Header = ({ toggleDrawer }) => {
             FridgeFriend
           </h1>
         </div>
-        {!user ? (
+        {!currentUser ? (
           <LoginButton />
         ) : (
           <div className="flex space-x-4">
