@@ -1,4 +1,4 @@
-const { Ticket } = require('../../models');
+const { Ticket, User } = require('../../models');
 
 const createTicket = async (req, res) => {
     const { fridgeId, openedBy, serviceType, details, imageUrl } = req.body;
@@ -10,6 +10,9 @@ const createTicket = async (req, res) => {
             details,
             imageUrl,
         });
+        const updatedUser = await User.findById(openedBy)
+        updatedUser.tickets.push(newTicket._id);
+        updatedUser.save();
         res.status(200).send(newTicket);
     } catch (err) {
         console.error(err);
@@ -29,7 +32,7 @@ const getAllTicketsByFridgeID = async (req, res) => {
         console.error(err);
         res.sendStatus(500);
     }
-    
+
 };
 
 const getAllOpenTicketsByFridgeID = async (req, res) => {
@@ -108,7 +111,7 @@ const getAllClosedTicketsByUserID = async (req, res) => {
     };
 
 module.exports = {
-    getAllTicketsByFridgeID, 
+    getAllTicketsByFridgeID,
     getAllOpenTicketsByFridgeID,
     getAllClosedTicketsByFridgeID,
     getAllTicketsByUserID,

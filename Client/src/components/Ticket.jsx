@@ -11,7 +11,7 @@ import {
 import { UserContext } from '../contexts/user.context';
 import axios from 'axios'
 
-const Ticket = ({ fridgeId, isModalOpen, setIsModalOpen }) => {
+const Ticket = ({ fridgeId, isTicketModalOpen, setIsTicketModalOpen }) => {
   const { currentUser } = useContext(UserContext);
   const [serviceType, setServiceType] = useState('');
   const [details, setDetails] = useState('');
@@ -30,7 +30,7 @@ const Ticket = ({ fridgeId, isModalOpen, setIsModalOpen }) => {
       imageUrl,
     })
       .then(() => {
-        setIsModalOpen(false);
+        setIsTicketModalOpen(false);
       })
       .catch(err => {
         console.error(err)
@@ -39,14 +39,14 @@ const Ticket = ({ fridgeId, isModalOpen, setIsModalOpen }) => {
 
   return (
     <Modal
-      open={isModalOpen}
+      open={isTicketModalOpen}
     >
       <button
-        onClick={() => setIsModalOpen(false)}
+        onClick={() => setIsTicketModalOpen(false)}
       >
         Cancel
       </button>
-      <H1>Create a Ticket</H1>
+      <h1>Create a Ticket</h1>
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel id="ticket-type-radio-group-label">Select option that best describes issue</FormLabel>
@@ -76,3 +76,5 @@ const Ticket = ({ fridgeId, isModalOpen, setIsModalOpen }) => {
     </Modal>
   )
 }
+
+export default Ticket;

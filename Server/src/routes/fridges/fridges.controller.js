@@ -82,11 +82,34 @@ const addImageToInsideFridge = async (req, res) => {
   fs.emptyDir('./tmp');
 }
 
+const addSubscription = async (req, res) => {
+  try {
+    // NOTE: there are other props in req.body ( maintenance, cleaning, food, transportation, misc, foodAdded ) but do not need destructuring
+    const { userId } = req.body;
+    const newClasses = req.body;
+    delete newClasses.userId;
+    const fridgeId = req.params.id;
+    const fridge = await Fridge.findById(fridgeId);
+    const foundSub = fridge.subscriptions.find((sub) => sub.userId === userId)
+    if (!foundSub) {
+      fridge.subscriptions.push({classes: newClasses, userId })
+      res.status(200).send(fridge.subscriptions[fridge.subscriptions.length - 1])
+    } else {
+      foundSub.classes = { ...foundSub.classes, ...newClasses }
+      foundSub.save();
+      res.status(200).send(foundSub);
+    }
+  } catch (err) {
+    res.sendStatus(500);
+  }
+}
+
 
 module.exports = {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
-  updateByField
+  updateByField,
+  addSubscription
 }
 

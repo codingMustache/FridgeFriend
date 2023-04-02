@@ -4,7 +4,8 @@ const {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
-  updateByField
+  updateByField,
+  addSubscription,
 } = require("./fridges.controller");
 /*
 getFridgeGeoCode
@@ -24,6 +25,10 @@ fridgesRouter
   .get(getAllFridgesGeoCode)
 //   .put()
 //   .delete();
+
+fridgesRouter
+  .route('/subscription/:id')
+  .put(addSubscription)
 
 
 module.exports = fridgesRouter;
