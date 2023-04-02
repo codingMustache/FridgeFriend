@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const fridgeSchema = new Schema({
     location: {
-        lat: Number, 
+        lat: Number,
         lon: Number,
         address: {
             neighborhood: String,
@@ -30,7 +30,7 @@ const fridgeSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Ticket"
     },
-    subscriptions: {
+    subscriptions: [{
         classes: {
             foodAdded: {
                 type: Boolean,
@@ -65,9 +65,9 @@ const fridgeSchema = new Schema({
         },
         userId: {
             type: Schema.Types.ObjectId,
-            ref: "User", 
+            ref: "User",
         },
-    }
+    }]
 }, { timestamps: true });
 
 module.exports = model("Fridge", fridgeSchema);

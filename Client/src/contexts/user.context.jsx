@@ -8,15 +8,14 @@ export const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
-  const { isAuthenticated, user } = useAuth0;
+  const { isAuthenticated, user } = useAuth0();
   const [currentUser, setCurrentUser] = useState(null);
   const value = useMemo(() => ({ currentUser, setCurrentUser }), [currentUser]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      axios.post('/api/user', { email: user.email })
+      axios.post('http://localhost:3000/api/user', { email: user.email })
         .then(({ data }) => {
-          console.log(data);
           setCurrentUser(data);
         })
         .catch(err => {

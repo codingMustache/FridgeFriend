@@ -5,7 +5,7 @@ export default {
     extend: {
       fontFamily: {
         jakarta: ['Plus Jakarta Sans', 'sans-serif'],
-      }
+      },
     },
   },
   plugins: [],
