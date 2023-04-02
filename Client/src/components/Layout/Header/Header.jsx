@@ -7,13 +7,11 @@ import LoginButton from '../../Auth/LoginButton';
 
 const Header = ({ toggleDrawer }) => {
   const { user, logout } = useAuth0();
-const Header = () => {
   const { currentUser } = useContext(UserContext);
 
   useMemo(() => {
-    console.log('currentUser', currentUser);
+    console.log('currentUser useMemo', currentUser);
   }, [currentUser])
-
 
   return (
     <header className="w-full bg-transparent fixed z-30 md:bg-white md:transition-colors md:shadow-sm">
