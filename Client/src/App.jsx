@@ -38,7 +38,7 @@ const App = () => {
       </Map>
 
       <div
-        className="bg-white rounded-3xl shadow-lg z-50 absolute top-16
+        className="bg-white rounded-3xl shadow-lg z-30 absolute top-16
        left-1/2 transform -translate-x-1/2 w-3/4 md:top-20 md:w-1/2
        "
       >
@@ -47,10 +47,10 @@ const App = () => {
           <h2>Fridge</h2>
         </div> */}
         <div className="flex justify-between items-center px-3 py-2">
-          <MapPinIcon className="w-6 h-6" />
+          <MapPinIcon className="w-6 h-6 text-[#051A2D]" />
           <input
             type="text"
-            className="w-4/5 h-full  focus:outline-none placeholder:text-[#051A2D]"
+            className="w-4/5 h-full bg-white focus:outline-none placeholder:text-[#051A2D]"
             placeholder="Search Location"
           />
           <div className="bg-[#FB7712] rounded-full w-6 h-6 flex justify-center items-center">
