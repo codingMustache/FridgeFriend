@@ -16,8 +16,10 @@ const upload = multer({ dest: './tmp/' }).single('file');
 
 const getAllFridgesGeoCode = async (req, res) => {
   Fridge.find({}).select('location')
-    .then(data => res.send(data))
-    .catch(err => error.log(err))
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => console.error(err))
 }
 
 const addFridge = async (req, res) => {
@@ -38,21 +40,23 @@ const addFridge = async (req, res) => {
       }
       Fridge.create(fridgeDbObj)
     })
-    .catch(err => error.log(err))
+    .catch(err => console.error(err))
   res.sendStatus(200)
 }
 
 const getFridgeInfoByID = (req, res) => {
-  Fridge.findOne({ "_id": req.params.id })
-    .then(data => res.send(data))
-    .catch(err => error.log(err))
+  console.log(req.params.id)
+  Fridge.findOne({"_id": req.params.id})
+  .then(data => res.send(data))
+  .catch(err => console.error(err))
 }
+
 const updateByField = async (req, res) => {
   const update = req.body
   const _id = req.params.id
   Fridge.findOneAndUpdate(_id, update, { new: true })
     .then(data => res.send(data))
-    .catch(err => error.log(err))
+    .catch(err => console.error(err))
 }
 const addImageToInsideFridge = async (req, res) => {
   const _id = req.params.id
@@ -72,12 +76,12 @@ const addImageToInsideFridge = async (req, res) => {
       format: 'jpg',
     })
     .then((data) => {
-      const fullArr = imgArr.push(data.url)
+      const fullArr = imgArr.push({url: data.url})
       Fridge.findOneAndUpdate(_id, fullArr, { new: true })
         .then(data => res.status(201).json(data.url))
-        .catch(err => error.log(err))
+        .catch(err => console.error(err))
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
 
   fs.emptyDir('./tmp');
 }
@@ -110,6 +114,7 @@ module.exports = {
   getAllFridgesGeoCode,
   getFridgeInfoByID,
   updateByField,
+  addImageToInsideFridge,
   addSubscription
 }
 

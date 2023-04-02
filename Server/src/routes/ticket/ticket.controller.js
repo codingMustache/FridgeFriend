@@ -20,6 +20,31 @@ const createTicket = async (req, res) => {
     }
 };
 
+const closeTicket = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        Ticket.findOneAndUpdate({_id: userId}, {isOpen: false});
+        console.log("ticket closed succesfully");
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+};
+
+const openTicket = async (req, res) => {
+    const { userId } = req.params;
+    try {
+        Ticket.findOneAndUpdate({_id: userId}, {isOpen: true});
+        console.log("ticket opened!");
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+
+};
+
 const getAllTicketsByFridgeID = async (req, res) => {
     // use the fridges ID to query all the tickets that exist on the tickets array from the db
     const { fridgeId } = req.params;
@@ -117,5 +142,7 @@ module.exports = {
     getAllTicketsByUserID,
     getAllOpenTicketsByUserID,
     getAllClosedTicketsByUserID,
-    createTicket
+    createTicket,
+    closeTicket,
+    openTicket
 };

@@ -4,6 +4,7 @@ const {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
+  addImageToInsideFridge,
   updateByField,
   addSubscription,
 } = require("./fridges.controller");
@@ -18,6 +19,10 @@ fridgesRouter
   .route('/:id')
   .get(getFridgeInfoByID)
   .put(updateByField)
+
+fridgesRouter
+.route('/images:id')
+  .put(addImageToInsideFridge)
 
 fridgesRouter
   .route('/')
