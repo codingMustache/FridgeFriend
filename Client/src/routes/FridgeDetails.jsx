@@ -34,46 +34,21 @@ const FridgeDetails = () => {
           <div>
             <img
               className="h-auto max-w-full rounded-lg"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/featured/image.jpg"
+              src={fridgeDetails.insideImages[0].url}
               alt=""
             />
           </div>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-5 md:gap-4">
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://i.ibb.co/kQMzY1N/Rectangle-6.png"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://i.ibb.co/pxgH9m3/Rectangle-14.png"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://i.ibb.co/k9TMn5X/Rectangle-11.png"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://i.ibb.co/G5bmVGQ/Rectangle-12.png"
-                alt=""
-              />
-            </div>
-            <div>
-              <img
-                className="h-auto max-w-full rounded-lg"
-                src="https://i.ibb.co/f2ZsLhc/Rectangle-6-1.png"
-                alt=""
-              />
-            </div>
+            {fridgeDetails.insideImages.map(e => (
+              <div>
+                <img
+                  className="h-auto max-w-full rounded-lg"
+                  src={e.url}
+                  alt="test"
+                />
+              </div>
+            ))}
+           
           </div>
         </div>
       </div>
@@ -98,14 +73,14 @@ const FridgeDetails = () => {
               <div className="flex space-x-4 order-first md:order-none">
                 <button
                   className="bg-[#6F9D80] flex justify-center items-center py-2 px-3 rounded-3xl font-semibold text-base hover:bg-[#5F8D70] text-white"
-                  onClick={() => {}}
+                  onClick={() => { }}
                 >
                   <PlusIcon className="h-7 w-7 md:h-5 md:w-5" /> Create Ticket
                 </button>
 
                 <button
                   className="bg-[#F5F5F5] flex justify-center items-center p-2 rounded-3xl font-semibold text-base hover:bg-[#E5E5E5]"
-                  onClick={() => {}}
+                  onClick={() => { }}
                 >
                   <BellAlertIcon className="h-7 w-7 md:h-5 md:w-5" /> Get
                   Notified
