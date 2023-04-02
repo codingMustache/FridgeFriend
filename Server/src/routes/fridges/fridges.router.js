@@ -19,6 +19,10 @@ fridgesRouter
   .put(updateByField)
 
 fridgesRouter
+.route('/images:id')
+  .put(addImageToInsideFridge)
+
+fridgesRouter
   .route('/')
   .post(addFridge)
   .get(getAllFridgesGeoCode)

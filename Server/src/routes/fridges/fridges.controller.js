@@ -87,6 +87,7 @@ module.exports = {
   addFridge,
   getAllFridgesGeoCode,
   getFridgeInfoByID,
-  updateByField
+  updateByField,
+  addImageToInsideFridge
 }
 
