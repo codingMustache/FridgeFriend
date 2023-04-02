@@ -1,16 +1,41 @@
-import { useCallback } from 'react';
-import Map, { GeolocateControl } from 'react-map-gl';
+import axios from 'axios';
+import { useCallback, useEffect, useState, useMemo } from 'react';
+import Map, { GeolocateControl, Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import FridgeMarker from './assets/FridgeMarker.svg';
 import { MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/solid';
 
 const App = () => {
+  const [fridges, setFridges] = useState([]);
+
   const geoLocateControlRef = useCallback((ref) => {
     if (ref) {
       ref.trigger();
     }
   }, []);
 
+  useEffect(() => {
+    const getFridges = async () => {
+      const { data } = await axios.get('http://localhost:3000/api/fridges/');
+      setFridges(data);
+    };
+    getFridges();
+  }, []);
+
+  const fridgeMarkers = useMemo(() => {
+    return fridges.map((fridge) => (
+      <Marker
+        key={fridge._id}
+        longitude={fridge.location.lon}
+        latitude={fridge.location.lat}
+      >
+        <a href={`/details/${fridge._id}`}>
+          <img src={FridgeMarker} alt="Fridge Marker" className="w-20 h-20" />
+        </a>
+      </Marker>
+    ));
+  }, [fridges]);
   return (
     <>
       <Map
@@ -35,6 +60,8 @@ const App = () => {
           showUserHeading={true}
           position="bottom-right"
         />
+
+        {fridgeMarkers}
       </Map>
 
       <div
