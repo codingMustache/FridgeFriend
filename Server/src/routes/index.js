@@ -6,8 +6,8 @@ const fridgesRouter = require("./fridges/fridges.router");
 
 
 const api = express.Router();
-//api.use("/user", userRouter);
+api.use("/user", userRouter);
 api.use("/fridges", fridgesRouter);
-//api.use("/ticket", ticketRouter);
+api.use("/ticket", ticketRouter);
 
 module.exports = api;
