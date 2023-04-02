@@ -11,7 +11,7 @@ const getAllFridgesGeoCode = async (req, res) => {
     .then(data => {
       res.send(data)
     })
-    .catch(err => error.log(err))
+    .catch(err => console.error(err))
 }
 
 const addFridge = async (req, res) => {
@@ -32,7 +32,7 @@ const addFridge = async (req, res) => {
       }
       Fridge.create(fridgeDbObj)
     })
-    .catch(err => error.log(err))
+    .catch(err => console.error(err))
   res.sendStatus(200)
 }
 
@@ -40,7 +40,7 @@ const getFridgeInfoByID = (req, res) => {
   console.log(req.params.id)
   Fridge.findOne({"_id": req.params.id})
   .then(data => res.send(data))
-  .catch(err => error.log(err))
+  .catch(err => console.error(err))
 }
 
 module.exports = {
