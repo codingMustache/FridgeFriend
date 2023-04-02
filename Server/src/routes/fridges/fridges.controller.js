@@ -37,15 +37,28 @@ const addFridge = async (req, res) => {
 }
 
 const getFridgeInfoByID = (req, res) => {
-  console.log(req.params.id)
-  Fridge.findOne({"_id": req.params.id})
-  .then(data => res.send(data))
-  .catch(err => error.log(err))
+
+
+  Fridge.findOne({ "_id": req.params.id })
+    .then(data => res.send(data))
+    .catch(err => error.log(err))
+}
+const updateByField = async (req, res) => {
+  const update = req.body
+  const _id = req.params.id
+  Fridge.findOneAndUpdate(_id, update, {
+    new: true
+  })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => error.log(err))
 }
 
 module.exports = {
   addFridge,
   getAllFridgesGeoCode,
-  getFridgeInfoByID
+  getFridgeInfoByID,
+  updateByField
 }
 
