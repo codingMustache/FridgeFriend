@@ -1,9 +1,16 @@
 import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
+import { useContext, useMemo } from 'react';
+import { UserContext } from '../../../contexts/user.context';
 import LogoGreen from '../../../assets/LogoGreen.svg';
 import LoginButton from '../../Auth/LoginButton';
 
 const Header = () => {
-  const user = false;
+  const { currentUser } = useContext(UserContext);
+
+  useMemo(() => {
+    console.log('currentUser', currentUser);
+  }, [currentUser])
+
 
   return (
     <header className="w-full bg-transparent fixed z-50 md:bg-white md:transition-colors md:shadow-sm">
@@ -14,7 +21,7 @@ const Header = () => {
             FridgeFriend
           </h1>
         </div>
-        {!user ? (
+        {!currentUser ? (
           <LoginButton />
         ) : (
           <img
