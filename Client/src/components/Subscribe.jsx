@@ -20,14 +20,15 @@ const Subscribe = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('subObj:', subObj)
-    axios.put(`http://localhost:3000/api/fridges/subscription/${fridgeId}`, {...subObj, userId: currentUser._id})
-      .then(() => {
-        console.log('eh?')
-        navigate(`/details/${fridgeId}`);
-      })
-      .catch(err => {
-        console.error(err)
-      })
+    // axios.put(`http://localhost:3000/api/fridges/subscription/${fridgeId}`, {...subObj, userId: currentUser._id})
+    //   .then(() => {
+    //     console.log('eh?')
+    //     navigate(`/details/${fridgeId}`);
+    //   })
+    //   .catch(err => {
+    //     console.error(err)
+    //   })
+    navigate(`/details/${fridgeId}`);
   }
 
   const handleCheckChange = (e) => {
@@ -36,6 +37,10 @@ const Subscribe = () => {
     } else {
       delete subObj[e.target.value];
     }
+  }
+
+  const handleTypeNotifyChange = () => {
+
   }
 
   return (
@@ -55,6 +60,12 @@ const Subscribe = () => {
           <FormControlLabel control={<Checkbox onChange={(e) => handleCheckChange(e)} />} label='Food issues (i.e. raw food needs cooking)' value='food' />
           <FormControlLabel control={<Checkbox onChange={(e) => handleCheckChange(e)} />} label='Transportation issues (i.e. someone has or needs food but cannot get to fridge' value='transportation' />
           <FormControlLabel control={<Checkbox onChange={(e) => handleCheckChange(e)} />} label='Miscellaneous issues' value='misc' />
+        </FormGroup>
+        <FormGroup>
+          <h3>How would you like to be notified</h3>
+          <FormControlLabel control={<Checkbox onChange={(e) => handleTypeNotifyChange(e)} />} label='Text' value='text' />
+          <FormControlLabel control={<Checkbox onChange={(e) => handleTypeNotifyChange(e)} />} label='Email' value='email' />
+
         </FormGroup>
         <button
           type='submit'

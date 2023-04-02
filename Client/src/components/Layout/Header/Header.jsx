@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
 import { useContext, useMemo } from 'react';
@@ -16,12 +17,12 @@ const Header = ({ toggleDrawer }) => {
   return (
     <header className="w-full bg-transparent fixed z-30 md:bg-white md:transition-colors md:shadow-sm">
       <nav className="p-4 flex justify-between">
-        <div className="flex space-x-2">
+        <a href='/' className="flex space-x-2" >
           <img src={LogoGreen} alt="Logo" className="h-8 w-8" />
           <h1 className="text-[#051A2D] font-jakarta font-bold">
             FridgeFriend
           </h1>
-        </div>
+        </a>
         {!currentUser ? (
           <LoginButton />
         ) : (
