@@ -14,4 +14,5 @@ ticketRouter.get('/:userId/closed', getAllClosedTicketsByUserID);
 ticketRouter.post('/new_ticket', createTicket);
 ticketRouter.post('/:userId/close_tick', closeTicket);
 ticketRouter.post('/:userId/open_tick', openTicket);
+
 module.exports = ticketRouter;
