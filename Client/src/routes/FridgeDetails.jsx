@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BellAlertIcon, PlusIcon } from '@heroicons/react/24/solid';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const FridgeDetails = () => {
   const { fridge } = useParams();
+  const navigate = useNavigate();
 
   const [fridgeDetails, setFridgeDetails] = useState(null);
+  const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
 
   useEffect(() => {
     const getFridgeDetails = async () => {
@@ -48,7 +51,7 @@ const FridgeDetails = () => {
                 />
               </div>
             ))}
-           
+
           </div>
         </div>
       </div>
@@ -73,14 +76,14 @@ const FridgeDetails = () => {
               <div className="flex space-x-4 order-first md:order-none">
                 <button
                   className="bg-[#6F9D80] flex justify-center items-center py-2 px-3 rounded-3xl font-semibold text-base hover:bg-[#5F8D70] text-white"
-                  onClick={() => { }}
+                  onClick={() => navigate(`/new-ticket/${fridge}`)}
                 >
                   <PlusIcon className="h-7 w-7 md:h-5 md:w-5" /> Create Ticket
                 </button>
 
                 <button
                   className="bg-[#F5F5F5] flex justify-center items-center p-2 rounded-3xl font-semibold text-base hover:bg-[#E5E5E5]"
-                  onClick={() => { }}
+                  onClick={() => navigate(`/subscribe/${fridge}`)}
                 >
                   <BellAlertIcon className="h-7 w-7 md:h-5 md:w-5" /> Get
                   Notified
