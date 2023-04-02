@@ -1,11 +1,11 @@
 const express = require("express");
 
 const {
-  addFridge
+  addFridge,
+  getAllFridgesGeoCode,
+  getFridgeInfoByID
 } = require("./fridges.controller");
 /*
-getAllFridgesGeoCode
-getFridgeAddress
 getFridgeGeoCode
 getFridgesImagesB
 */
@@ -15,8 +15,12 @@ const fridgesRouter = express.Router();
 fridgesRouter
   .route('/')
   .post(addFridge)
-//   .get()
+  .get(getAllFridgesGeoCode)
 //   .put()
 //   .delete();
+
+fridgesRouter
+  .route('/:id')
+  .get(getFridgeInfoByID)
 
 module.exports = fridgesRouter;
