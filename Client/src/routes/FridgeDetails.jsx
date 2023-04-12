@@ -10,7 +10,8 @@ const FridgeDetails = () => {
   const [fridgeDetails, setFridgeDetails] = useState(null);
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
-
+  const [toggle, setToggle] = useState(true);
+  
   useEffect(() => {
     const getFridgeDetails = async () => {
       try {
@@ -24,7 +25,9 @@ const FridgeDetails = () => {
     };
 
     getFridgeDetails();
-  }, [fridge]);
+  }, [fridge, toggle]);
+
+  console.log('here',fridgeDetails);
 
   if (!fridgeDetails) {
     return <div>Loading...</div>;
